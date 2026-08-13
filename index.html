@@ -258,12 +258,17 @@
   .founder-card{ background:var(--paper-dk); border:1px solid var(--ink); padding:28px;}
 
   /* Photo slot — drop an <img> inside .f-photo to replace the placeholder */
+  .f-top{
+    display:flex;
+    align-items:center;
+    gap:24px;
+    margin-bottom:22px;
+  }
   .f-photo{
-    width:140px; height:140px;
+    width:160px; height:160px;
     border-radius:50%;
     border:1.5px solid var(--ink);
     background:var(--paper);
-    margin:0 auto 22px;
     overflow:hidden;
     display:flex; align-items:center; justify-content:center;
     position:relative; flex-shrink:0;
@@ -274,19 +279,23 @@
     pointer-events:none; z-index:2;
   }
   .f-photo img{
-    width:100%; height:100%; object-fit:cover; display:block;
+    width:100%; height:100%; 
+    object-fit:cover; 
+    object-position:top center; /* THIS FIXES THE HEAD CUT-OFF */
+    display:block;
     border-radius:50%;
   }
-  .f-photo:has(img)::before{ opacity:1; }
   .f-photo-note{
-    font-family:var(--mono); font-size:9.5px; letter-spacing:.12em;
-    text-transform:uppercase; color:var(--foot); text-align:center;
-    line-height:1.6; padding:8px;
+    font-family:var(--display); font-weight:700; font-size:2.4rem; 
+    color:var(--ink); text-align:center;
+    display:flex; align-items:center; justify-content:center;
+    width:100%; height:100%;
   }
   .f-photo:has(img) .f-photo-note{ display:none; }
 
-  .f-name{ font-weight:600; font-size:1.2rem; font-family:var(--body); text-align:center; }
-  .f-role{ font-style:italic; color:var(--rust); font-size:13px; margin-top:4px; text-align:center; }
+  .f-text{ display:flex; flex-direction:column; gap:4px; }
+  .f-name{ font-weight:600; font-size:1.3rem; font-family:var(--body); line-height:1.15; }
+  .f-role{ font-style:italic; color:var(--rust); font-size:14px; }
   
   .backing{ margin-top:24px; padding:28px; background:var(--pine); border:1px solid var(--ink); color:var(--on-dark-body); display:grid; grid-template-columns:1.3fr auto 1fr; gap:24px; align-items:center;}
   @media (max-width:760px){ .backing{ grid-template-columns:1fr; } }
@@ -579,27 +588,38 @@
     <h2 class="thesis">Two technical co-founders, backed by a proven AI engineering team</h2>
 
     <div class="founder-grid">
+      
       <div class="founder-card">
-        <div class="f-photo">
-          <img src="shaheryar.jpg" alt="Shaheryar Shakeel">
-        </div>
         <div class="f-top">
-          <div class="f-ring">SS</div>
-          <div><div class="f-name">Shaheryar Shakeel</div><div class="f-role">Co-founder</div></div>
+          <div class="f-photo">
+            <!-- Make sure this path matches your repo exactly (case-sensitive) -->
+            <img src="images/shaheryar.jpg" alt="Shaheryar Shakeel">
+            <!-- Fallback: Shows "SS" if the image fails to load or is missing -->
+            <span class="f-photo-note">SS</span>
+          </div>
+          <div class="f-text">
+            <div class="f-name">Shaheryar Shakeel</div>
+            <div class="f-role">Co-founder</div>
+          </div>
         </div>
         <p class="f-desc">Technical co-founder. Owns architecture and delivery alongside Jawad.</p>
       </div>
+      
       <div class="founder-card">
-        <div class="f-photo">
-          <img src="jawad.jpg" alt="Jawad Ali Yousafzai">
-        </div>
         <div class="f-top">
-          <div class="f-ring">JA</div>
-          <div><div class="f-name">Jawad Ali Yousafzai</div><div class="f-role">Co-founder · Relocating to Abu Dhabi</div></div>
+          <div class="f-photo">
+            <!-- Make sure this path matches your repo exactly (case-sensitive) -->
+            <img src="images/jawad.jpg" alt="Jawad Ali Yousafzai">
+            <!-- Fallback: Shows "JA" if the image fails to load or is missing -->
+            <span class="f-photo-note">JA</span>
+          </div>
+          <div class="f-text">
+            <div class="f-name">Jawad Ali Yousafzai</div>
+            <div class="f-role">Co-founder · Relocating to Abu Dhabi</div>
+          </div>
         </div>
-        <p class="f-desc">Technical co-founder. Committed to relocating and building in Abu Dhabi for the programme.</p>
+        <p class="f-desc">Technical co-founder. Committed to relocating and building the core team in Abu Dhabi for the programme.</p>
       </div>
-    </div>
 
     <div class="backing">
       <div>
