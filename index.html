@@ -84,7 +84,7 @@
   .accent-pine{color:var(--pine);}
   .italic{font-style:italic;}
 
-  /* ---------- Top nav mark ---------- */
+  /* ---------- Top mark → back-to-top button ---------- */
   .mark{
     position:fixed; top:20px; right:var(--pad); z-index:50;
     font-family:var(--display); font-weight:700; font-size:15px;
@@ -94,9 +94,12 @@
     -webkit-backdrop-filter:blur(4px);
     padding:6px 12px;
     border:1px solid var(--ink);
-    transition:color .3s ease, background .3s ease, border-color .3s ease;
+    text-decoration:none; cursor:pointer;
+    transition:color .3s ease, background .3s ease, border-color .3s ease, transform .2s ease;
   }
+  .mark:hover{ background:var(--ink); color:var(--paper); border-color:var(--ink); transform:translateY(-2px); }
   .mark.dark-zone{ color:var(--gold); border-color:var(--footline-dark); background:rgba(22,33,28,.7); }
+  .mark.dark-zone:hover{ background:var(--gold); color:var(--ink); border-color:var(--gold); }
 
   /* ---------- Ribbon (signature element) ---------- */
   .ribbon-svg{ display:block; width:100%; height:auto; }
@@ -247,17 +250,31 @@
   .founder-grid{ display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:30px;}
   @media (max-width:700px){ .founder-grid{ grid-template-columns:1fr; } }
   .founder-card{ background:var(--paper-dk); border:1px solid var(--ink); padding:28px;}
+
+  /* Photo slot — drop an <img> inside .f-photo to replace the placeholder */
+  .f-photo{
+    width:100%; height:240px;
+    border:1px dashed var(--foot);
+    background:var(--paper);
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:20px; overflow:hidden;
+  }
+  .f-photo img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .f-photo:has(img) .f-photo-note{ display:none; }
+  .f-photo-note{ font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--foot); text-align:center; line-height:1.9; }
+
   .f-top{ display:flex; align-items:center; gap:16px; margin-bottom:18px;}
   .f-ring{
     width:64px; height:64px; border-radius:50%; border:1.5px solid var(--ink);
     display:flex; align-items:center; justify-content:center;
     font-family:var(--display); font-weight:700; font-size:1.3rem; flex-shrink:0;
     position:relative;
+    background:var(--paper);
   }
   .f-ring::after{ content:""; position:absolute; inset:8px; border:1px solid var(--ink); border-radius:50%;}
   .f-name{ font-weight:600; font-size:1.15rem; font-family:var(--body);}
   .f-role{ font-style:italic; color:var(--rust); font-size:13px; margin-top:3px;}
-  .f-desc{ font-size:14.5px; color:var(--muted); line-height:1.5; border-top:1px dashed var(--foot); padding-top:16px;}
+  .f-desc{ font-size:14.5px; color:var(--muted); line-height:1.5; border-top:1px dashed var(--foot); padding-top:16px; margin-bottom:0;}
 
   .backing{ margin-top:24px; padding:28px; background:var(--pine); border:1px solid var(--ink); color:var(--on-dark-body); display:grid; grid-template-columns:1.3fr auto 1fr; gap:24px; align-items:center;}
   @media (max-width:760px){ .backing{ grid-template-columns:1fr; } }
@@ -291,6 +308,15 @@
   .ask-item h4{ font-family:var(--body); font-weight:600; font-size:1.05rem; color:var(--paper); margin:0 0 4px;}
   .ask-item p{ font-size:14px; color:var(--on-dark-muted); margin:0;}
 
+  /* Contact details block (email + phone placeholders) */
+  .contact-block{ margin-top:36px; border:1px dashed var(--footline-dark); padding:24px 26px; max-width:560px; }
+  .contact-label{ font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); font-weight:600; margin-bottom:6px;}
+  .contact-hint{ font-style:italic; font-size:12.5px; color:var(--on-dark-muted); margin:0 0 14px;}
+  .contact-row{ display:flex; gap:16px; align-items:baseline; padding:12px 0; border-top:1px solid var(--footline-dark); }
+  .c-key{ font-family:var(--mono); font-size:11px; letter-spacing:.1em; color:var(--on-dark-muted); width:64px; flex-shrink:0;}
+  .c-val{ font-family:var(--mono); font-size:14px; color:var(--paper); text-decoration:none; border-bottom:1px dashed var(--footline-dark); transition:color .2s ease, border-color .2s ease; overflow-wrap:anywhere;}
+  .c-val:hover{ color:var(--gold); border-color:var(--gold); }
+
   .closing-foot{ margin-top:56px; padding-top:28px; border-top:1px solid var(--footline-dark);}
   .closing-brand{ font-family:var(--display); font-weight:800; font-size:1.6rem; color:var(--gold);}
   .closing-names{ margin-top:10px; font-size:14.5px; color:var(--paper);}
@@ -318,7 +344,8 @@
 </head>
 <body>
 
-<div class="mark" id="markTag">B/S</div>
+<!-- B/S — back-to-top button -->
+<a class="mark" id="markTag" href="#top" aria-label="Back to top" title="Back to top">B/S</a>
 
 <!-- ============ HERO ============ -->
 <header class="hero" id="top">
@@ -342,7 +369,6 @@
     <p class="hero-tag">A small, testable idea for a missing tool in RNA design — backed by Antematter.io.</p>
     <div class="cta-row">
       <a class="btn solid" href="#ask">Read the ask →</a>
-      <a class="btn" href="mailto:hello@bisect.dev">Get in touch</a>
     </div>
   </div>
   <div class="scroll-cue"><span class="chev">↓</span> SCROLL — HUB71 ACCESS PROGRAMME, COHORT 20</div>
@@ -534,7 +560,7 @@
   </div>
 </section>
 
-<!-- ============ TEAM ============ -->
+<!-- ============ TEAM (PAGE 8) ============ -->
 <section class="section-pad" id="team">
   <div class="wrap">
     <div class="eyebrow"><b>Team</b> · Builders Who've Scoped The Problem</div>
@@ -542,6 +568,12 @@
 
     <div class="founder-grid">
       <div class="founder-card">
+        <!-- ✏️ PHOTO SLOT — SHAHEERYAR: replace the placeholder below with:
+             <img src="images/shaheryar.jpg" alt="Shaheryar Shakeel">
+             (delete the <span class="f-photo-note"> line once the image is in) -->
+        <div class="f-photo">
+          <span class="f-photo-note">Photo slot<br>— to be added —</span>
+        </div>
         <div class="f-top">
           <div class="f-ring">SS</div>
           <div><div class="f-name">Shaheryar Shakeel</div><div class="f-role">Co-founder</div></div>
@@ -549,6 +581,12 @@
         <p class="f-desc">Technical co-founder. Owns architecture and delivery alongside Jawad.</p>
       </div>
       <div class="founder-card">
+        <!-- ✏️ PHOTO SLOT — JAWAD: replace the placeholder below with:
+             <img src="images/jawad.jpg" alt="Jawad Ali Yousafzai">
+             (delete the <span class="f-photo-note"> line once the image is in) -->
+        <div class="f-photo">
+          <span class="f-photo-note">Photo slot<br>— to be added —</span>
+        </div>
         <div class="f-top">
           <div class="f-ring">JA</div>
           <div><div class="f-name">Jawad Ali Yousafzai</div><div class="f-role">Co-founder · Relocating to Abu Dhabi</div></div>
@@ -635,9 +673,19 @@
       <div class="ask-item"><div class="ask-num">03</div><div><h4>A staged path to prove it</h4><p>Test Phase I–II before committing to full-scale funding</p></div></div>
     </div>
 
-    <div class="cta-row">
-      <a class="btn solid" href="mailto:hello@bisect.dev">Contact us</a>
-      <a class="btn" href="#top">Back to top ↑</a>
+    <!-- ✏️ CONTACT DETAILS — add your real email & phone here
+         (update both the href and the visible text on each line) -->
+    <div class="contact-block">
+      <div class="contact-label">Contact</div>
+      <p class="contact-hint">Details to be added — replace the placeholders below.</p>
+      <div class="contact-row">
+        <span class="c-key">EMAIL</span>
+        <a class="c-val" href="mailto:ADD_EMAIL_HERE">[email address — to be added]</a>
+      </div>
+      <div class="contact-row">
+        <span class="c-key">PHONE</span>
+        <a class="c-val" href="tel:ADD_PHONE_HERE">[phone number — to be added]</a>
+      </div>
     </div>
 
     <div class="closing-foot">
