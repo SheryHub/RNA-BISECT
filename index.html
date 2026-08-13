@@ -246,6 +246,12 @@
   .cust-ex{ font-style:italic; color:var(--pine); font-size:12.5px; margin-bottom:8px;}
   .cust-why{ font-size:12.5px; color:var(--muted); line-height:1.4;}
 
+  /* --- Link to Antematter ---*/
+  a.ext{ text-decoration:underline; text-underline-offset:4px; text-decoration-color:var(--rust); transition:color .2s ease; }
+  a.ext:hover{ color:var(--rust); }
+  .hero a.ext, .dark a.ext, .backing a.ext{ text-decoration-color:var(--gold); }
+  .hero a.ext:hover, .dark a.ext:hover, .backing a.ext:hover{ color:var(--gold); }
+  
   /* ---------- Founders ---------- */
   .founder-grid{ display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:30px;}
   @media (max-width:700px){ .founder-grid{ grid-template-columns:1fr; } }
@@ -360,13 +366,13 @@
     <div class="kicker">Confidential · 2026</div>
     <h1 class="hero-title">BISECT</h1>
     <p class="hero-sub">Find the exact edit that broke your RNA design.</p>
-    <p class="hero-tech">git-bisect for RNA sequence design — automated regression search across edit history</p>
+    <p class="hero-tech">automated regression search across edit history</p>
     <div class="hero-founders">
       <div class="names">Shaheryar Shakeel · Jawad Ali Yousafzai</div>
-      <div class="role">Co-founders — both technical</div>
+      <div class="role">Technical Co-founders</div>
     </div>
     <div class="hero-line"></div>
-    <p class="hero-tag">A small, testable idea for a missing tool in RNA design — backed by Antematter.io.</p>
+    <p class="hero-tag">A small, testable idea for a missing tool in RNA design — backed by <a class="ext" href="https://antematter.io" target="_blank" rel="noopener">Antematter.io</a>.</p>
     <div class="cta-row">
       <a class="btn solid" href="#ask">Read the ask →</a>
     </div>
@@ -568,11 +574,8 @@
 
     <div class="founder-grid">
       <div class="founder-card">
-        <!-- ✏️ PHOTO SLOT — SHAHEERYAR: replace the placeholder below with:
-             <img src="images/shaheryar.jpg" alt="Shaheryar Shakeel">
-             (delete the <span class="f-photo-note"> line once the image is in) -->
         <div class="f-photo">
-          <span class="f-photo-note">Photo slot<br>— to be added —</span>
+          <img src="images/shaheryar.jpg" alt="Shaheryar Shakeel">
         </div>
         <div class="f-top">
           <div class="f-ring">SS</div>
@@ -581,24 +584,21 @@
         <p class="f-desc">Technical co-founder. Owns architecture and delivery alongside Jawad.</p>
       </div>
       <div class="founder-card">
-        <!-- ✏️ PHOTO SLOT — JAWAD: replace the placeholder below with:
-             <img src="images/jawad.jpg" alt="Jawad Ali Yousafzai">
-             (delete the <span class="f-photo-note"> line once the image is in) -->
         <div class="f-photo">
-          <span class="f-photo-note">Photo slot<br>— to be added —</span>
+          <img src="images/jawad.jpg" alt="Jawad Ali Yousafzai">
         </div>
         <div class="f-top">
           <div class="f-ring">JA</div>
           <div><div class="f-name">Jawad Ali Yousafzai</div><div class="f-role">Co-founder · Relocating to Abu Dhabi</div></div>
         </div>
-        <p class="f-desc">Technical co-founder. Committed to relocating and building the core team in Abu Dhabi for the programme.</p>
+        <p class="f-desc">Technical co-founder. Committed to relocating and building in Abu Dhabi for the programme.</p>
       </div>
     </div>
 
     <div class="backing">
       <div>
         <div class="eyebrow on-dark" style="margin-bottom:6px;"><b>Backed by</b></div>
-        <h3>Antematter.io</h3>
+        <h3><a class="ext" href="https://antematter.io" target="_blank" rel="noopener">Antematter.io</a></h3>
         <p>AI solutions engineering firm — production-grade agentic systems for regulated, high-stakes workflows.</p>
       </div>
       <div class="back-stats">
@@ -691,10 +691,10 @@
     <div class="closing-foot">
       <div class="closing-brand">BISECT</div>
       <div class="closing-names">Shaheryar Shakeel · Jawad Ali Yousafzai</div>
-      <div class="closing-back">BACKED BY ANTEMATTER.IO</div>
+      <div class="closing-back">BACKED BY <a class="ext" href="https://antematter.io" target="_blank" rel="noopener">ANTEMATTER.IO</a></div>
     </div>
 
-    <div class="foot-bar"><span>bisect.dev · Confidential investor brief</span><span>10 / 10</span></div>
+    <div class="foot-bar"><span><a class="ext" href="https://sheryhub.github.io/RNA-BISECT/" target="_blank" rel="noopener">BISECT</a> · Confidential investor brief</span><span>10 / 10</span></div>
   </div>
 </section>
 
