@@ -259,29 +259,35 @@
 
   /* Photo slot — drop an <img> inside .f-photo to replace the placeholder */
   .f-photo{
-    width:100%; height:240px;
-    border:1px dashed var(--foot);
+    width:140px; height:140px;
+    border-radius:50%;
+    border:1.5px solid var(--ink);
     background:var(--paper);
+    margin:0 auto 22px;
+    overflow:hidden;
     display:flex; align-items:center; justify-content:center;
-    margin-bottom:20px; overflow:hidden;
+    position:relative; flex-shrink:0;
   }
-  .f-photo img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .f-photo::before{
+    content:""; position:absolute; inset:7px;
+    border:1px solid var(--ink); border-radius:50%;
+    pointer-events:none; z-index:2;
+  }
+  .f-photo img{
+    width:100%; height:100%; object-fit:cover; display:block;
+    border-radius:50%;
+  }
+  .f-photo:has(img)::before{ opacity:1; }
+  .f-photo-note{
+    font-family:var(--mono); font-size:9.5px; letter-spacing:.12em;
+    text-transform:uppercase; color:var(--foot); text-align:center;
+    line-height:1.6; padding:8px;
+  }
   .f-photo:has(img) .f-photo-note{ display:none; }
-  .f-photo-note{ font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--foot); text-align:center; line-height:1.9; }
 
-  .f-top{ display:flex; align-items:center; gap:16px; margin-bottom:18px;}
-  .f-ring{
-    width:64px; height:64px; border-radius:50%; border:1.5px solid var(--ink);
-    display:flex; align-items:center; justify-content:center;
-    font-family:var(--display); font-weight:700; font-size:1.3rem; flex-shrink:0;
-    position:relative;
-    background:var(--paper);
-  }
-  .f-ring::after{ content:""; position:absolute; inset:8px; border:1px solid var(--ink); border-radius:50%;}
-  .f-name{ font-weight:600; font-size:1.15rem; font-family:var(--body);}
-  .f-role{ font-style:italic; color:var(--rust); font-size:13px; margin-top:3px;}
-  .f-desc{ font-size:14.5px; color:var(--muted); line-height:1.5; border-top:1px dashed var(--foot); padding-top:16px; margin-bottom:0;}
-
+  .f-name{ font-weight:600; font-size:1.2rem; font-family:var(--body); text-align:center; }
+  .f-role{ font-style:italic; color:var(--rust); font-size:13px; margin-top:4px; text-align:center; }
+  
   .backing{ margin-top:24px; padding:28px; background:var(--pine); border:1px solid var(--ink); color:var(--on-dark-body); display:grid; grid-template-columns:1.3fr auto 1fr; gap:24px; align-items:center;}
   @media (max-width:760px){ .backing{ grid-template-columns:1fr; } }
   .backing h3{ font-size:1.4rem; margin:6px 0 10px;}
