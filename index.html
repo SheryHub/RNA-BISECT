@@ -285,6 +285,11 @@
     display:block;
     border-radius:50%;
   }
+  
+  .f-photo--wide img{
+    object-position: center 15%;
+  }
+  
   .f-photo-note{
     font-family:var(--display); font-weight:700; font-size:2.4rem; 
     color:var(--ink); text-align:center;
@@ -591,7 +596,7 @@
       
       <div class="founder-card">
         <div class="f-top">
-          <div class="f-photo">
+          <div class="f-photo f-photo--wide">
             <!-- Make sure this path matches your repo exactly (case-sensitive) -->
             <img src="shaheryar.jpg" alt="Shaheryar Shakeel">
             <!-- Fallback: Shows "SS" if the image fails to load or is missing -->
